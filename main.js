@@ -28,9 +28,12 @@ function speak(){
     Webcam.attach(camera); 
 
     setTimeout(function()  {
+        img_id="selfie1";
         take_snapshot();
-        save();
-    }, 100);
+        speak_data="Taking Your selfie in 5 seconds";
+        var utter_This = new SpeechSynthesisUtterance(speak_data);
+        synth.speak(utterThis);
+    }, 5000);
  
 }
 Webcam.set({
@@ -41,9 +44,29 @@ Webcam.set({
 });
 camera=document.getElementById("camera");
 function take_snapshot(){
-    Webcam.snap(function(data_uri) {
-      document.getElementById("result").innerHTML= '<img id="selfie_image" src="'+data_uri+'">';
+
+    console.log(img_id);
+
+    Webcam.snap(function(data_uri){
+        
+    if(img_id=="selfie1"){
+        document.getElementById("result1").innerHTML= '<img id="selfie1" src="'+data_uri+'"/>'
+    }
+
+    if(img_id=="selfie2"){
+        document.getElementById("result2").innerHTML= '<img id="selfie2" src="'+data_uri+'"/>'
+    }
+    
+    if(img_id=="selfie3"){
+        document.getElementById("result3").innerHTML= '<img id="selfie3" src="'+data_uri+'"/>'
+    }
+
+    
+
+
+
     })
+
 }
 
 function save()
