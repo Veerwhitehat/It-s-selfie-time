@@ -2,7 +2,7 @@ var sr= window.webkitSpeechRecognition;
 var r= new sr();
 
 function start(){
-    document.getElementById("text_area").innerHTML="";
+    
     r.start()
 }
 
@@ -15,7 +15,7 @@ r.onresult= function run(event){
         console.log(" Iron Man selfie ---");
        speak() 
     }
-    document.getElementById("text_area").innerHTML=content;
+  
 
     
 
@@ -31,10 +31,26 @@ function speak(){
         img_id="selfie1";
         take_snapshot();
         speak_data="Taking Your selfie in 5 seconds";
-        var utter_This = new SpeechSynthesisUtterance(speak_data);
+        var utterThis = new SpeechSynthesisUtterance(speak_data);
         synth.speak(utterThis);
     }, 5000);
  
+    setTimeout(function()  {
+        img_id="selfie2";
+        take_snapshot();
+        speak_data="Taking Your selfie in 5 seconds";
+        var utterThis = new SpeechSynthesisUtterance(speak_data);
+        synth.speak(utterThis);
+    }, 10000);
+
+    setTimeout(function()  {
+        img_id="selfie3";
+        take_snapshot();
+        
+    }, 15000);
+ 
+ 
+
 }
 Webcam.set({
     width:365,
